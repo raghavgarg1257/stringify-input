@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Stringify Input</title>
+    </head>
+    <body>
+        <div>
+            <button onclick = "stringify_schema()">Copy Stringified Schema Body</button>
+            <div style="display: flex;">
+                <textarea id="schema-input" style="height: 15em; width: 50%;"></textarea>
+                <textarea id="schema-output" style="height: 15em; width: 50%;"></textarea>
+            </div>
+        </div>
+
+        <script>
+            function stringify_schema () {
+                const stringifiedSchema = document.getElementById('schema-input').value;
+
+                document.getElementById('schema-output').innerHTML = JSON.stringify(String.raw\`\$\{stringifiedSchema\}\`);
+
+                const copyTextarea = document.querySelector('#schema-output');
+                copyTextarea.innerHTML = JSON.stringify(String.raw\`\$\{stringifiedSchema\}\`);
+                copyTextarea.focus();
+                copyTextarea.select();
+
+                try {
+                    var successful = document.execCommand('copy');
+                    var msg = successful ? 'successful' : 'unsuccessful';
+                    console.log('Copying text command was ' + msg);
+                } catch (err) {
+                    console.log('Oops, unable to copy');
+                }
+                return successful;
+            }
+        </script>
+    </body>
+</html>

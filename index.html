@@ -17,10 +17,10 @@
             function stringify_schema () {
                 const stringifiedSchema = document.getElementById('schema-input').value;
 
-                document.getElementById('schema-output').innerHTML = JSON.stringify(String.raw\`\$\{stringifiedSchema\}\`);
+                document.getElementById('schema-output').innerHTML = JSON.stringify(String.raw`${stringifiedSchema}`);
 
                 const copyTextarea = document.querySelector('#schema-output');
-                copyTextarea.innerHTML = JSON.stringify(String.raw\`\$\{stringifiedSchema\}\`);
+                copyTextarea.innerHTML = JSON.stringify(String.raw`${stringifiedSchema}`);
                 copyTextarea.focus();
                 copyTextarea.select();
 
